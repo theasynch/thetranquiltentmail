@@ -13,6 +13,7 @@ class onMessage(commands.Cog):
 			return
 
 		if isinstance(message.channel, discord.DMChannel):
+			message.add_reaction("✅")
 			guild = self.bot.get_guild(862944848919003156)
 			categ = utils.get(guild.categories, name = "Modmail Tickets")
 			if not categ:
