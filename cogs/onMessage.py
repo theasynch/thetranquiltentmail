@@ -51,6 +51,7 @@ class onMessage(commands.Cog):
 			await member.send("The thread is closing in 10s!")
 			await ctx.send("Deleting the channel in 10 seconds!")
 			await asyncio.sleep(10)
+			await member.send("━━━━━━━━━━THIS THREAD WAS CLOSED!━━━━━━━━━━")
 			await ctx.channel.delete()
 
 def setup(bot):
