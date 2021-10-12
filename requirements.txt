@@ -1,2 +1,2 @@
-py_cord==2.0.0a3859+g6d30c5b7
+
 discord==1.7.3
