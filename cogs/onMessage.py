@@ -27,6 +27,7 @@ class onMessage(commands.Cog):
 			if not channel:
 				channel = await categ.create_text_channel(name = f"{message.author.name}#{message.author.discriminator}", topic = str(message.author.id))
 				await channel.send(f"New modmail created by {message.author.mention}")
+				message.add_reaction("✅")
 
 			embed = discord.Embed(description = message.content, colour = 0x696969)
 			embed.set_author(name = message.author, icon_url = message.author.avatar_url)
