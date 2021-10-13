@@ -47,7 +47,7 @@ class onMessage(commands.Cog):
 						await member.send(embed = embed)
 
 	@commands.command()
-	async def close(self, ctx, *, text):
+	async def close(self, ctx, *, text = None):
 		if ctx.channel.category.name == "Modmail Tickets":
 			if text == None:
 				text = "N/A"
