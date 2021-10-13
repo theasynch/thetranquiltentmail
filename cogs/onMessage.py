@@ -43,7 +43,8 @@ class onMessage(commands.Cog):
 					member = message.guild.get_member(int(topic))
 					if member:
 						embed = discord.Embed(description = message.content, colour = 0x696969)
-						embed.set_author(name = message.author, icon_url = message.author.avatar_url)
+						embed.set_author(name=message.author, icon_url=message.author.avatar_url,
+						                 url=f"https://discordapp.com/users/{message.author.id}")
 						await member.send(embed = embed)
 
 	@commands.command()
