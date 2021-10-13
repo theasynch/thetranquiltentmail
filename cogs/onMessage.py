@@ -47,14 +47,14 @@ class onMessage(commands.Cog):
 						await member.send(embed = embed)
 
 	@commands.command()
-	async def close(self, ctx):
+	async def close(self, ctx, *, text):
 		if ctx.channel.category.name == "Modmail Tickets":
 			id = int(ctx.channel.topic)
 			member = self.bot.get_user(id)
 			await member.send("The thread is closing in 10s!")
 			await ctx.send("Deleting the channel in 10 seconds!")
 			await asyncio.sleep(10)
-			embed = discord.Embed(description = "> This thread was closed.")
+			embed = discord.Embed(description = f"> This thread was closed. \n Reason: {text}")
 			await member.send(embed = embed)
 			await ctx.channel.delete()
 
