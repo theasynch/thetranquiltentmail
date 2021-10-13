@@ -15,6 +15,7 @@ class onMessage(commands.Cog):
 		if isinstance(message.channel, discord.DMChannel):
 			guild = self.bot.get_guild(862944848919003156)
 			categ = utils.get(guild.categories, name = "Modmail Tickets")
+			files  = message.attachments
 			if not categ:
 				overwrites = {
 					guild.default_role : discord.PermissionOverwrite(read_messages = False),
@@ -24,6 +25,8 @@ class onMessage(commands.Cog):
 
 			channel = utils.get(categ.channels, topic = str(message.author.id))
 			if not channel:
+				for file in files:
+					await channel.send(file.url)
 				channel = await categ.create_text_channel(name = f"{message.author.name}#{message.author.discriminator}", topic = str(message.author.id))
 				await channel.send(f"New modmail created by {message.author.mention}")
 				embed = discord.Embed(title = "ModMail Sucessful!", description = "A new thread was created sucessfullyin the server! Please wait. The mods will reach out to you soon. \n `Thank You for using this service!`", color = 0x00ff00)
@@ -35,6 +38,7 @@ class onMessage(commands.Cog):
 			await channel.send(embed = embed)
 
 		elif isinstance(message.channel, discord.TextChannel):
+			files = message.attachments
 			if message.content.startswith(self.bot.command_prefix):
 				pass
 			else:
@@ -42,6 +46,8 @@ class onMessage(commands.Cog):
 				if topic:
 					member = message.guild.get_member(int(topic))
 					if member:
+						for file in files:
+							await member.send(file.url)
 						embed = discord.Embed(description = message.content, colour = 0x696969)
 						embed.set_author(name=message.author, icon_url=message.author.avatar_url,
 						                 url=f"https://discordapp.com/users/{message.author.id}")
