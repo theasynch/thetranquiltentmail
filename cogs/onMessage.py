@@ -26,6 +26,8 @@ class onMessage(commands.Cog):
 			if not channel:
 				channel = await categ.create_text_channel(name = f"{message.author.name}#{message.author.discriminator}", topic = str(message.author.id))
 				await channel.send(f"New modmail created by {message.author.mention}")
+				embed = discord.Embed(title = "ModMail Sucessful!", description = "A new thread was created sucessfullyin the server! Please wait. The mods will reach out to you soon. \n `Thank You for using this service!`", color = 0x00ff00)
+				await message.author.send(embed = embed)
 				await message.add_reaction("✅")
 
 			embed = discord.Embed(description = message.content, colour = 0x696969)
