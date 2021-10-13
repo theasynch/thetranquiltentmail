@@ -49,6 +49,8 @@ class onMessage(commands.Cog):
 	@commands.command()
 	async def close(self, ctx, *, text):
 		if ctx.channel.category.name == "Modmail Tickets":
+			if text == None:
+				text = "N/A"
 			id = int(ctx.channel.topic)
 			member = self.bot.get_user(id)
 			await member.send("The thread is closing in 10s!")
