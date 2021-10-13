@@ -14,4 +14,4 @@ async def on_ready():
 	bot.load_extension("cogs.onMessage")
 	await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='DMs for Help.'))
 
-bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.Pbi6xsEwV9_LQIY46Qcd8SK1-Qg')
+bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
