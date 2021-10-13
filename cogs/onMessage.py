@@ -54,7 +54,7 @@ class onMessage(commands.Cog):
 			await member.send("The thread is closing in 10s!")
 			await ctx.send("Deleting the channel in 10 seconds!")
 			await asyncio.sleep(10)
-			embed = discord.Embed(description = f"> This thread was closed. \n Reason: {text}")
+			embed = discord.Embed(title = "Thread Closed", description = f"This thread was closed by {ctx.author.name}\n Reason: {text}")
 			await member.send(embed = embed)
 			await ctx.channel.delete()
 
