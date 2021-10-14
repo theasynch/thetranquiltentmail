@@ -22,6 +22,7 @@ async def mail(ctx,member: discord.Member = None, *,body):
 	embed = discord.Embed(title = "Message from the Mods!", description = f"Hey {member.mention}!, You have received a message from the Mods @Dank Camp.")
 	embed.add_field(name = "__Author__:", value = f"{user.mention}", inline = False)
 	embed.add_field(name = "__Message__", value = f"{body}", inline = False)
+	embed.set_footer(text = "Please do not reply to this message unless you want to create a thread!")
 	await member.send(embed=embed)
 
 bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
