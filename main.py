@@ -16,10 +16,11 @@ async def on_ready():
 
 @bot.command()
 async def mail(ctx,member: discord.Member = None, *,body):
+	user = ctx.author
 	if member == None:
 		await ctx.send("No member specified, or the member is not found!")
 	embed = discord.Embed(title = "Message from the Mods!", description = f"Hey {member.mention}!, You have received a message from the Mods @Dank Camp.")
-	embed.add_field(name = "__Author__:", value = f"{ctx.auhtor.mention}")
+	embed.add_field(name = "__Author__:", value = f"{user.mention}")
 	embed.add_field(name = "__Message__", value = f"{body}")
 	await member.send(embed=embed)
 
