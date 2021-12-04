@@ -25,4 +25,11 @@ async def mail(ctx,member: discord.Member = None, *,body):
 	embed.set_footer(text = "Please do not reply to this message unless you want to create a thread!")
 	await member.send(embed=embed)
 
+
+@bot.command()
+async def chnick(ctx, member: discord.Member = None):
+	await member.edit(nick="The Tranquil Tent")
+	await ctx.send(f'Nickname was changed for {member.mention} ')
+
+
 bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
