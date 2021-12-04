@@ -28,8 +28,10 @@ async def mail(ctx,member: discord.Member = None, *,body):
 
 @bot.command()
 async def chnick(ctx, member: discord.Member = None):
-	await member.edit(nick="The Tranquil Tent")
-	await ctx.send(f'Nickname was changed for {member.mention} ')
-
+	if ctx.author.id == 692295384868978710:
+		await member.edit(nick="The Tranquil Tent")
+		await ctx.send(f'Nickname was changed for {member.mention} ')
+	else:
+		pass
 
 bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
