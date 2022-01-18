@@ -35,4 +35,9 @@ async def chnick(ctx, member: discord.Member = None):
 	else:
 		pass
 
+for filename in os.listdir('./cogs'):
+    # Slicing the extension for cogs.py. so that the program can understand the language.
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.{filename[:-3]}')
+
 client.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
