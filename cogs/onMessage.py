@@ -4,16 +4,16 @@ import discord
 import asyncio
 
 class onMessage(commands.Cog):
-	def __init__(self, bot):
-		self.bot = bot
+	def __init__(self, client):
+		self.client = client
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		if message.author.bot:
+		if message.author.client:
 			return
 
 		if isinstance(message.channel, discord.DMChannel):
-			guild = self.bot.get_guild(862944848919003156)
+			guild = self.client.get_guild(931771066387431505)
 			categ = utils.get(guild.categories, name = "Modmail Tickets")
 			files  = message.attachments
 			if not categ:
@@ -39,7 +39,7 @@ class onMessage(commands.Cog):
 
 		elif isinstance(message.channel, discord.TextChannel):
 			files = message.attachments
-			if message.content.startswith(self.bot.command_prefix):
+			if message.content.startswith(self.client.command_prefix):
 				pass
 			else:
 				topic = message.channel.topic
@@ -59,7 +59,7 @@ class onMessage(commands.Cog):
 			if text == None:
 				text = "N/A"
 			id = int(ctx.channel.topic)
-			member = self.bot.get_user(id)
+			member = self.client.get_user(id)
 			await member.send("The thread is closing in 10s!")
 			await ctx.send("Deleting the channel in 10 seconds!")
 			await asyncio.sleep(10)
@@ -67,5 +67,5 @@ class onMessage(commands.Cog):
 			await member.send(embed = embed)
 			await ctx.channel.delete()
 
-def setup(bot):
-	bot.add_cog(onMessage(bot))
+def setup(client):
+	client.add_cog(onMessage(client))

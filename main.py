@@ -6,15 +6,15 @@ intents = discord.Intents.default()
 # we need members intent too
 intents.members = True
 
-bot = commands.Bot(command_prefix = "!", intents = intents)
+client = commands.client(command_prefix = "!", intents = intents)
 
-@bot.event
+@client.event
 async def on_ready():
-	print("The bot is online!")
-	bot.load_extension("cogs.onMessage")
-	await bot.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='DMs for Help.'))
+	print("The client is online!")
+	client.load_extension("cogs.onMessage")
+	await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='DMs for Help.'))
 
-@bot.command()
+@client.command()
 async def mail(ctx,member: discord.Member = None, *,body):
 	user = ctx.author
 	if member == None:
@@ -26,7 +26,7 @@ async def mail(ctx,member: discord.Member = None, *,body):
 	await member.send(embed=embed)
 
 
-@bot.command()
+@client.command()
 async def chnick(ctx, member: discord.Member = None):
 	if ctx.author.id == 692295384868978710:
 		await member.edit(nick="The Tranquil Tent")
@@ -34,4 +34,4 @@ async def chnick(ctx, member: discord.Member = None):
 	else:
 		pass
 
-bot.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
+client.run('ODk3MzYzNTMxNjgxMzk0NzE4.YWUk6g.bvbRcMO02yioTyfn64rO7qovlUY')
