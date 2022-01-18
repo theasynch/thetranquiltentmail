@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 import os
-
+from discord_components import *
 intents = discord.Intents.default()
 # we need members intent too
 intents.members = True
@@ -11,8 +11,9 @@ client = commands.client(command_prefix = "!", intents = intents)
 @client.event
 async def on_ready():
 	print("The client is online!")
-	client.load_extension("cogs.onMessage")
+	client.load_extension("cogs.onMessage","cogs.priv_vc")
 	await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='DMs for Help.'))
+	
 
 @client.command()
 async def mail(ctx,member: discord.Member = None, *,body):
