@@ -9,7 +9,7 @@ class onMessage(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		if message.author.client:
+		if message.author.bot:
 			return
 
 		if isinstance(message.channel, discord.DMChannel):
