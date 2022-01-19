@@ -28,7 +28,7 @@ class PrivVC(commands.Cog):
 				await member.move_to(priv_vc)
 				embed = discord.Embed(
 					title = "New Private Voice Channel Created!",
-					description = f"Hello {member.mention}! Your new Private Voice Channel has been created and you have been moved to the channel.\n Cheers!"
+					description = f"Hello {member.mention}! Your new Private Voice Channel has been created and you have been moved to the channel.\n Cheers!",
 					color = 0x00ff00,
 				)
 				embed.set_footer(text = "Type '!help priv_vc' for more actions")
