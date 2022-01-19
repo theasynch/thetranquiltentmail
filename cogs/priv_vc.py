@@ -9,7 +9,7 @@ class PrivVC(commands.Cog):
 	@commands.command()
 	async def hi(self,ctx):
 		await ctx.send('Hi')
-	@commands.Cog.listener
+	@commands.Cog.listener()
 	async def on_voice_state_update(self, member, before, after):
 		guild = self.client.get_guild(931771066387431505)
 		categ = utils.get(guild.categories, name = 'Voices')
