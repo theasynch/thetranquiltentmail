@@ -32,7 +32,7 @@ class PrivVC(commands.Cog):
                                         )
 					embed.set_footer(text="Type '!help priv_vc' for more actions")
 					embed.set_thumbnail(
-					url="https://media.istockphoto.com/vectors/vinyl-record-player-in-modern-flat-style-vector-id1282459424?k=20&m=1282459424&s=612x612&w=0&h=4Xbaj5StcZESTvEG-2e7dgNQcMSlLiTHlK1zVnI4XvI=")
+                                            url="https://github.com/SudhanPlayz/Discord-MusicBot/blob/master/assets/logo.gif?raw=true")
 				await member.send(embed=embed)
 				await member.move_to(priv_vc)
 				
