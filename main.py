@@ -6,7 +6,7 @@ intents = discord.Intents.default()
 # we need members intent too
 intents.members = True
 
-client = commands.client(command_prefix = "!", intents = intents)
+client = commands.Bot(command_prefix = "!", intents = intents)
 
 @client.event
 async def on_ready():

@@ -1,14 +1,16 @@
 from discord.ext import commands
 from discord import utils
 import discord
-import asyncio
-
 class PrivVC(commands.Cog):
 	def __init__(self, client):
 		self.client = client
+
+
 	@commands.command()
 	async def hi(self,ctx):
 		await ctx.send('Hi')
+
+
 	@commands.Cog.listener()
 	async def on_voice_state_update(self, member, before, after):
 		guild = self.client.get_guild(931771066387431505)
