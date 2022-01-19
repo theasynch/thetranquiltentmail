@@ -23,6 +23,7 @@ class PrivVC(commands.Cog):
 					member : discord.PermissionOverwrite(view_channel = True, speak = True, create_instant_invite =True)
 				}
 				priv_vc = await categ.create_voice_channel(name = f"{member.display_name}'s VC", overwrites = overwrites)
+				await member.move_to(priv_vc)
 
 
 def setup(client):
