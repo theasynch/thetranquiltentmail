@@ -33,8 +33,9 @@ class PrivVC(commands.Cog):
 					embed.set_footer(text="Type '!help priv_vc' for more actions")
 					embed.set_thumbnail(
                                             url="https://github.com/SudhanPlayz/Discord-MusicBot/blob/master/assets/logo.gif?raw=true")
-				await member.send(embed=embed)
+				
 				await member.move_to(priv_vc)
+				await member.send(embed=embed)
 				
 
 def setup(client):
