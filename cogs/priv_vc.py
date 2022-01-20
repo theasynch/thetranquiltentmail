@@ -1,4 +1,5 @@
 from discord.ext import commands
+from discord.ui import Button
 from discord import utils
 import discord
 class PrivVC(commands.Cog):
@@ -35,6 +36,20 @@ class PrivVC(commands.Cog):
                                             url="https://github.com/SudhanPlayz/Discord-MusicBot/blob/master/assets/logo.gif?raw=true")
 					await member.send(embed=embed)
 				await member.move_to(priv_vc)
+
+	@commands.command()
+	async def invc(self, ctx, member: discord.Member = None):
+		if ctx.author.voice == True and ctx.author.VoiceState.channel.name == f"{member.display_name}'s VC":
+			if member is None:
+				await ctx.reply("Please mention a valid member to invite.")
+			else:
+				embed = discord.Embed(
+					title = 'Private VC Invite!',
+					description = f"{member.mention}, you have been invited by {ctx.author.mention} to their private VC. \nPlease click on the below button for joining the VC",
+					color=0xfbd428
+				
+				)
+				member.send(embed=embed)
 				
 
 def setup(client):
