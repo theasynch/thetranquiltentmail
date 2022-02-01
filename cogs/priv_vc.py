@@ -1,5 +1,4 @@
 from discord.ext import commands
-from discord.ui import Button
 from discord import utils
 import discord
 class PrivVC(commands.Cog):
