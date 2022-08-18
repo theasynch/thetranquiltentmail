@@ -1,5 +1,6 @@
 from discord.ext import commands
 from discord import utils
+import asyncio
 import discord
 class PrivVC(commands.Cog):
 	def __init__(self, client):
@@ -13,7 +14,7 @@ class PrivVC(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_voice_state_update(self, member, before, after):
-		guild = self.client.get_guild(931771066387431505)
+		guild = self.client.get_guild(862944848919003156)
 		categ = utils.get(guild.categories, name = 'Voices')
 		
 		if before.channel is None and after.channel is not None:
@@ -38,17 +39,27 @@ class PrivVC(commands.Cog):
 
 	@commands.command()
 	async def invc(self, ctx, member: discord.Member = None):
-		if ctx.author.voice == True and ctx.author.VoiceState.channel.name == f"{member.display_name}'s VC":
+		def check(reaction, user):
+			return user == member and str(reaction.emoji) == '✅'
+		if ctx.author.voice == True and ctx.author.VoiceState.channel == f"{ctx.author.display_name}'s VC":
 			if member is None:
 				await ctx.reply("Please mention a valid member to invite.")
 			else:
 				embed = discord.Embed(
 					title = 'Private VC Invite!',
-					description = f"{member.mention}, you have been invited by {ctx.author.mention} to their private VC. \nPlease click on the below button for joining the VC",
+					description = f"{member.mention}, you have been invited by {ctx.author.mention} to their private VC. \nPlease react with the ✅ to join the channel.",
 					color=0xfbd428
-				
 				)
-				member.send(embed=embed)
+				await member.send(embed=embed)
+				await embed.add_reaction('✅')
+				try:
+					check = await self.client.wait_for('reaction_add', timeout=60.0, check=check)
+				except asyncio.TimeoutError:
+					await member.send('You took too long to react. The invite has been cancelled.')
+				else:
+					await member.send('Invite accepted!Please refer to  below link to join the channel.')
+		elif ctx.author.voice == False:
+			await ctx.reply("You are not in a private VC! [Type: `!help priv_vc` for more info]")
 				
 
 def setup(client):
