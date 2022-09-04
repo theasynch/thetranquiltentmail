@@ -52,8 +52,8 @@ class onMessage(commands.Cog):
 						embed.set_author(name=message.author, icon_url=message.author.avatar_url,
 						                 url=f"https://discordapp.com/users/{message.author.id}")
 						await member.send(embed = embed)
-
-	@commands.command()
+	'''
+	@commands.slash_command(name = 'close', description = 'Close the ongoing thread')
 	async def close(self, ctx, *, text = None):
 		if ctx.channel.category.name == "Modmail Tickets":
 			if text == None:
@@ -66,6 +66,6 @@ class onMessage(commands.Cog):
 			embed = discord.Embed(title = "Thread Closed", description = f"This thread was closed by {ctx.author.name}\n Reason: {text}")
 			await member.send(embed = embed)
 			await ctx.channel.delete()
-
+		'''
 def setup(client):
 	client.add_cog(onMessage(client))

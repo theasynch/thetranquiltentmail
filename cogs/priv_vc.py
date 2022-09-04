@@ -7,10 +7,6 @@ class PrivVC(commands.Cog):
 		self.client = client
 
 
-	@commands.command()
-	async def hi(self,ctx):
-		await ctx.send('Hi')
-
 
 	@commands.Cog.listener()
 	async def on_voice_state_update(self, member, before, after):
@@ -31,12 +27,13 @@ class PrivVC(commands.Cog):
                                             description=f"Hello {member.mention}! Your new Private Voice Channel has been created and you have been moved to the channel.\n Cheers!",
                                             color=0x00ff00,
                                         )
-					embed.set_footer(text="Type '!help priv_vc' for more actions")
+					
 					embed.set_thumbnail(
                                             url="https://github.com/SudhanPlayz/Discord-MusicBot/blob/master/assets/logo.gif?raw=true")
 					await member.send(embed=embed)
 				await member.move_to(priv_vc)
 
+	'''
 	@commands.command()
 	async def invc(self, ctx, member: discord.Member = None):
 		def check(reaction, user):
@@ -60,7 +57,7 @@ class PrivVC(commands.Cog):
 					await member.send('Invite accepted!Please refer to  below link to join the channel.')
 		elif ctx.author.voice == False:
 			await ctx.reply("You are not in a private VC! [Type: `!help priv_vc` for more info]")
-				
+		'''		
 
 def setup(client):
 	client.add_cog(PrivVC(client))
