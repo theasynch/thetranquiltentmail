@@ -1,5 +1,5 @@
 from discord.ext import commands
-from discord import utils
+from discord import utils, Option
 import asyncio
 import discord
 class PrivVC(commands.Cog):
@@ -32,32 +32,21 @@ class PrivVC(commands.Cog):
                                             url="https://github.com/SudhanPlayz/Discord-MusicBot/blob/master/assets/logo.gif?raw=true")
 					await member.send(embed=embed)
 				await member.move_to(priv_vc)
+				await asyncio.sleep(1500)
+				await member.send('Notice!\nYou have 5 minutes left until your private vc is deleted!')
+				await asyncio.sleep(300)
+				await priv_vc.delete()
+				await member.send('Private VC time exhausted. Private VC had been delted.')
 
-	'''
-	@commands.command()
-	async def invc(self, ctx, member: discord.Member = None):
-		def check(reaction, user):
-			return user == member and str(reaction.emoji) == '✅'
-		if ctx.author.voice == True and ctx.author.VoiceState.channel == f"{ctx.author.display_name}'s VC":
-			if member is None:
-				await ctx.reply("Please mention a valid member to invite.")
-			else:
-				embed = discord.Embed(
-					title = 'Private VC Invite!',
-					description = f"{member.mention}, you have been invited by {ctx.author.mention} to their private VC. \nPlease react with the ✅ to join the channel.",
-					color=0xfbd428
-				)
-				await member.send(embed=embed)
-				await embed.add_reaction('✅')
-				try:
-					check = await self.client.wait_for('reaction_add', timeout=60.0, check=check)
-				except asyncio.TimeoutError:
-					await member.send('You took too long to react. The invite has been cancelled.')
-				else:
-					await member.send('Invite accepted!Please refer to  below link to join the channel.')
-		elif ctx.author.voice == False:
-			await ctx.reply("You are not in a private VC! [Type: `!help priv_vc` for more info]")
-		'''		
+	'''@discord.slash_command(name = 'invite_vc', description = 'Invite a friend to your private VC!')
+	async def invite_vc(self, ctx, member: Option(discord.Member, description = 'Whom do you want to invite?')):
+		if ctx.author.voice.channel is None:
+			ctx.respond('You are not in a Voice Channel. You cannot invite someone!', ephemeral = True)
+		elif ctx.author.voice is not None:
+			if ctx.author.voice.channel.name == '''
+
+
+
 
 def setup(client):
 	client.add_cog(PrivVC(client))
